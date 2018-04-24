@@ -34,6 +34,27 @@ export default class LoggedOut extends Component {
           style={styles.moreOptionsButton}>
             <Text style={styles.moreOptionsButtonText}>More options</Text>
           </TouchableHighlight>
+
+          <View style={styles.termWrapper}>
+            <Text style={styles.termText}>By tapping Continue, Create Account or More</Text>
+            <Text style={styles.termText}> options, </Text>
+            <Text style={styles.termText}>I agree to Airbnb's </Text>
+            <TouchableHighlight style={styles.termLinkButton}>
+              <Text style={styles.termText}>Terms of Service</Text>
+            </TouchableHighlight>
+            <TouchableHighlight style={styles.termLinkButton}>
+              <Text style={styles.termText}>Payments Terms of Service</Text>
+            </TouchableHighlight>
+            <Text style={styles.termText}>, </Text>
+            <TouchableHighlight style={styles.termLinkButton}>
+              <Text style={styles.termText}>Privacy Pollcy</Text>
+            </TouchableHighlight>
+            <Text style={styles.termText}>, and</Text>
+            <TouchableHighlight style={styles.termLinkButton}>
+              <Text style={styles.termText}>Nondiscrimination Policy</Text>
+            </TouchableHighlight>
+            <Text style={styles.termText}>.</Text>
+          </View>
         </View>
       </View>
     )
@@ -76,5 +97,20 @@ const styles = StyleSheet.create({
   moreOptionsButtonText: {
     fontSize: 16,
     color: colors.white
+  },
+  termWrapper: {
+    flexWrap: 'wrap',
+    alignItems: 'flex-start',
+    flexDirection: 'row',
+    marginTop: 30
+  },
+  termText: {
+    color: colors.white,
+    fontSize: 13,
+    fontWeight: '600'
+  },
+  termLinkButton: {
+    borderBottomWidth: 1,
+    borderBottomColor: colors.white
   }
 })
