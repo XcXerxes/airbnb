@@ -3,7 +3,7 @@ import NextArrowButton from './NextArrowButton'
 
 import TestRender from 'react-test-renderer'
 
-const testRender = TestRender.create(<NextArrowButton disabled={true} handleNextButton={() => console.log('handle')}  />)
+const testRender = TestRender.create(<NextArrowButton disabled={true} />)
 const testInstance = testRender.root
 const testTree = testRender.toJSON()
 
@@ -16,5 +16,5 @@ it('should renders props of disabled', () => {
 })
 
 it('should renders props number one', () => {
-  expect(Object.values(testInstance.props).length).toBe(2)
+  expect(Object.values(testInstance.props).length).toBe(1)
 })

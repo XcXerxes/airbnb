@@ -35,7 +35,7 @@ export default class InputField extends Component {
   }
   render () {
     const {secureInput, scaleCheckmarkValue} = this.state
-    const {labelText, labelTextSize, labelColor, textColor, borderBottomColor, inputType, customStyle, onChangeText, showCheckmark} = this.props
+    const {labelText, labelTextSize, labelColor, textColor, borderBottomColor, inputType, customStyle, onChangeText, showCheckmark, autoFocus, autoCapitalize} = this.props
     const fontSize = labelTextSize || 14
     const color = labelColor || colors.white
     const inputColor = textColor || colors.white
@@ -72,6 +72,9 @@ export default class InputField extends Component {
          secureTextEntry={secureInput}
          onChangeText={onChangeText}
          keyboardType={keyboardType}
+         autoFocus={autoFocus}
+         autoCapitalize={autoCapitalize}
+         autoCorrect={false}
         />
       </View>
     )
@@ -87,7 +90,9 @@ InputField.propTypes = {
   inputType: PropTypes.string.isRequired,
   customStyle: PropTypes.object,
   onChangeText: PropTypes.func,
-  showCheckmark: PropTypes.bool
+  showCheckmark: PropTypes.bool,
+  autoFocus: PropTypes.bool,
+  autoCapitalize: PropTypes.bool
 }
 
 const styles = StyleSheet.create({

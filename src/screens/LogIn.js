@@ -94,6 +94,7 @@ export default class LogIn extends Component {
             customStyle={{marginBottom: 30}}
             onChangeText={this.handleEmailChange}
             showCheckmark={emailValid}
+            autoFocus={true}
             />
             <InputField 
             labelText="PASSWORD"
