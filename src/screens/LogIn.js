@@ -1,4 +1,7 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import { bindActionCreators} from 'redux'
+import {ActionCreators} from '../redux/actions'
 import {View, Text, StyleSheet, ScrollView, KeyboardAvoidingView} from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import colors from '../styles/colors'
@@ -7,7 +10,7 @@ import NextArrowButton from '../components/buttons/NextArrowButton'
 import Notification from '../components/Notification'
 import Loader from '../components/Loader'
 
-export default class LogIn extends Component {
+class LogIn extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -30,13 +33,19 @@ export default class LogIn extends Component {
       loadingVisible: true
     })
     setTimeout(() => {
-      if (this.state.emailAddress === 'xc@gmail.com' && this.state.passwordValid) {
-        this.setState({formValid: true, loadingVisible: false}, () => {
-          alert('success')
-        })
+      const {emailAddress, password} = this.state
+      if (this.props.logIn(emailAddress, password)) {
+        this.setState({formValid: true, loadingVisible: false})
       } else {
         this.setState({formValid: false, loadingVisible: false})
       }
+      // if (this.state.emailAddress === 'xc@gmail.com' && this.state.passwordValid) {
+      //   this.setState({formValid: true, loadingVisible: false}, () => {
+      //     alert('success')
+      //   })
+      // } else {
+      //   this.setState({formValid: false, loadingVisible: false})
+      // }
     }, 2000)
   }
   // 提示文字
@@ -80,6 +89,7 @@ export default class LogIn extends Component {
     const {formValid, loadingVisible, emailValid, passwordValid} = this.state
     const showNotification = !formValid
     const backgroundColor = formValid ? colors.green01 : colors.darkOrange
+    console.log(this.props.loggedInStatus)
     return (
       <KeyboardAvoidingView style={[styles.wrapper, {backgroundColor}]}
         behavior="padding"
@@ -105,12 +115,10 @@ export default class LogIn extends Component {
             showCheckmark={passwordValid}
             />
           </ScrollView>
-          <View style={styles.nextButton}>
-            <NextArrowButton 
-              handleNextButton={this.handleNextButton}
-              disabled={this.toggleNextButtonState()}
-            />
-          </View>
+          <NextArrowButton 
+            handleNextButton={this.handleNextButton}
+            disabled={this.toggleNextButtonState()}
+          />
           <View style={[styles.notificationWrapper, showNotification ? {marginTop: 10} : {}]}>
             <Notification 
             showNotification={showNotification}
@@ -152,11 +160,6 @@ const styles = StyleSheet.create({
     color: colors.white,
     marginBottom: 30
   },
-  nextButton: {
-    alignItems: 'flex-end',
-    right: 20,
-    bottom: 10
-  },
   notificationWrapper:{
     position: 'absolute',
     bottom: 0,
@@ -165,3 +168,13 @@ const styles = StyleSheet.create({
     zIndex: 9
   }
 })
+const mapStateToProps = (state) => {
+  console.log(state)
+  return {
+    loggedInStatus: state.LoggedInStatus 
+  }
+}
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(ActionCreators, dispatch)
+}
+export default connect(mapStateToProps, mapDispatchToProps)(LogIn)

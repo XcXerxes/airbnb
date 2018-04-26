@@ -80,12 +80,10 @@ export default class ForgotPassword extends Component {
             showCheckmark={emailValid}
           />
         </ScrollView>
-        <View style={styles.nextButtonWrapper}>
-          <NextArrowButton 
-          handleNextButton={this.goToNextStep}
-          disabled={!emailValid}
-          />
-        </View>
+        <NextArrowButton 
+        handleNextButton={this.goToNextStep}
+        disabled={!emailValid}
+        />
         <View style={styles.notificationWrapper}>
           <Notification
           showNotification={!formValid}
@@ -132,13 +130,10 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 60
   },
-  nextButtonWrapper: {
-    alignItems: 'flex-end',
-    bottom: 20,
-    right: 20
-  },
   notificationWrapper: {
     position: 'absolute',
-    bottom: 0
+    bottom: 0,
+    left: 0,
+    right: 0
   }
 })

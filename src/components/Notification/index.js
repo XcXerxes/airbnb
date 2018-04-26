@@ -10,7 +10,6 @@ import {
   Animated,
   Easing
 } from 'react-native'
-import { validate } from 'jsonschema';
 
 export default class Notification extends Component {
   constructor (props) {

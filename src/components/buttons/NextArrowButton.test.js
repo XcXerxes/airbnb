@@ -7,6 +7,7 @@ const testRender = TestRender.create(<NextArrowButton disabled={true} />)
 const testInstance = testRender.root
 const testTree = testRender.toJSON()
 
+
 it('should renders components shot', () => {
   expect(testTree).toMatchSnapshot()
 })
