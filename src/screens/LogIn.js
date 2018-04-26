@@ -5,12 +5,18 @@ import {ActionCreators} from '../redux/actions'
 import {View, Text, StyleSheet, ScrollView, KeyboardAvoidingView} from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import colors from '../styles/colors'
+import {transparentHeaderStyle} from '../styles/navigation'
 import InputField from '../components/form/InputField'
 import NextArrowButton from '../components/buttons/NextArrowButton'
 import Notification from '../components/Notification'
 import Loader from '../components/Loader'
+import NavBarButton from '../components/buttons/NavBarButton'
 
 class LogIn extends Component {
+  static navigationOptions = ({ navigation}) => ({
+    headerStyle: transparentHeaderStyle,
+    headerTintColor: colors.white
+  })
   constructor (props) {
     super(props)
     this.state = {
