@@ -3,5 +3,6 @@ export default {
   white: '#ffffff',
   green01: '#008388',
   darkOrange: '#d93900',
-  lightGray: '#d8d8d8'
+  lightGray: '#d8d8d8',
+  pink: '#fc4c54'
 }
