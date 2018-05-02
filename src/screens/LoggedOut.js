@@ -12,6 +12,7 @@ export default class LoggedOut extends Component {
     handleButtonPress={() => navigation.navigate('LogIn')}
     color={colors.white} text="Log In" />,
     headerStyle: transparentHeaderStyle,
+    headerTransparent: true,
     headerTintColor: colors.white
   })
   onFacebookPress = () => {

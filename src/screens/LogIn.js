@@ -15,6 +15,7 @@ import NavBarButton from '../components/buttons/NavBarButton'
 class LogIn extends Component {
   static navigationOptions = ({ navigation}) => ({
     headerStyle: transparentHeaderStyle,
+    headerTransparent: true,
     headerTintColor: colors.white
   })
   constructor (props) {
