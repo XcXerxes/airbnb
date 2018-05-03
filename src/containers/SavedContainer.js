@@ -19,10 +19,16 @@ export default class SavedContainer extends Component {
   }
   render () {
     return (
-      <View>
+      <View style={styles.wrapper}>
         <Text>Saved Container</Text>
       </View>
     )
   }
 }
 
+const styles = StyleSheet.create({
+  wrapper: {
+    display: 'flex',
+    padding: 50
+  }
+})

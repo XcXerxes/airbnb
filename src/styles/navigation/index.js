@@ -6,3 +6,8 @@ export const transparentHeaderStyle = {
   right: 0,
   borderBottomWidth: 0
 }
+export const setHeaderStyle = (platform) => {
+  return platform === 'ios' ? {headerStyle: transparentHeaderStyle} : {
+    headerTransparent: true
+  }
+}

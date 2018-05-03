@@ -1,4 +1,4 @@
-import {TabNavigator} from 'react-navigation'
+import {TabNavigator, TabBarBottom} from 'react-navigation'
 import ExploreContainer from '../containers/ExploreContainer'
 import InboxContainer from '../containers/InboxContainer'
 import ProfileContainer from '../containers/ProfileContainer'
@@ -20,6 +20,8 @@ const LoggedTabNavigator = TabNavigator({
     },
     activeTintColor: colors.pink
   },
+  tabBarComponent: TabBarBottom,
+  tabBarPosition: 'bottom'
 })
 
 export default LoggedTabNavigator
