@@ -44,17 +44,10 @@ class LogIn extends Component {
       const {emailAddress, password} = this.state
       if (this.props.logIn(emailAddress, password)) {
         this.setState({formValid: true, loadingVisible: false})
-        navigate('LoggedIn')
+        navigate('TurnOnNotification')
       } else {
         this.setState({formValid: false, loadingVisible: false})
       }
-      // if (this.state.emailAddress === 'xc@gmail.com' && this.state.passwordValid) {
-      //   this.setState({formValid: true, loadingVisible: false}, () => {
-      //     alert('success')
-      //   })
-      // } else {
-      //   this.setState({formValid: false, loadingVisible: false})
-      // }
     }, 2000)
   }
   // 提示文字
