@@ -6,12 +6,14 @@ import LoggedOut from '../screens/LoggedOut'
 import LogIn from '../screens/LogIn'
 import ForgotPassword from '../screens/ForgotPassword'
 import LoggedIn from '../screens/LoggedIn'
+import TurnOnNotification from '../screens/TurnOnNotification'
 
 export const AppNavigator = StackNavigator({
   LoggedOut: {screen: LoggedOut},
   LoggedIn: {screen: LoggedIn},
   LogIn: {screen: LogIn},
-  ForgotPassword: {screen: ForgotPassword}
+  ForgotPassword: {screen: ForgotPassword},
+  TurnOnNotification: {screen: TurnOnNotification}
 })
 
 const AppWithNavigationState = ({dispatch, nav, listener}) => (
