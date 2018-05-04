@@ -6,5 +6,8 @@ export default {
   darkOrange: '#d93900',
   lightGray: '#d8d8d8',
   pink: '#fc4c54',
-  gray01: '#f3f3f3'
+  gray01: '#f3f3f3',
+  gray02: '#919191',
+  gray03: '#b3b3b3',
+  gray04: '#484848'
 }
