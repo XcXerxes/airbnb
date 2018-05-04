@@ -2,9 +2,14 @@ import React, {Component} from 'react'
 import {
   View,
   Text,
+  ScrollView,
   StyleSheet
 } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
+import colors from '../styles/colors'
+import SearchBar from '../components/form/SearchBar'
+import Categories from '../components/explore/Categories'
+import {categoriesList} from '../data/categories'
 
 export default class ExploreContainer extends Component {
   static navigationOptions = {
@@ -20,7 +25,15 @@ export default class ExploreContainer extends Component {
   render () {
     return (
       <View style={styles.wrapper}>
-        <Text>Explore Container</Text>
+        <SearchBar />
+        <ScrollView 
+        style={styles.scrollView}
+        contentContainerStyle={styles.scrollViewContent}>
+          <Text style={styles.heading}>Explore Airbnb</Text>
+          <View style={styles.categories}>
+            <Categories categories={categoriesList} />
+          </View>
+        </ScrollView>
       </View>
     )
   }
@@ -28,7 +41,23 @@ export default class ExploreContainer extends Component {
 
 const styles = StyleSheet.create({
   wrapper: {
-    display: 'flex',
-    padding: 50
+    flex: 1,
+    backgroundColor: colors.white
+  },
+  scrollViewContent: {
+    paddingBottom: 80
+  },
+  scrollView: {
+    paddingTop: 80
+  },
+  heading: {
+    fontSize: 22,
+    fontWeight: '600',
+    paddingLeft: 20,
+    paddingBottom: 20,
+    color: colors.gray04
+  },
+  categories: {
+    paddingLeft: 20
   }
 })
