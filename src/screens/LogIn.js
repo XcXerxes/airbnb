@@ -2,10 +2,10 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import { bindActionCreators} from 'redux'
 import {ActionCreators} from '../redux/actions'
-import {View, Text, StyleSheet, ScrollView, KeyboardAvoidingView} from 'react-native'
+import {View, Text, StyleSheet, ScrollView, KeyboardAvoidingView, Platform} from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import colors from '../styles/colors'
-import {transparentHeaderStyle} from '../styles/navigation'
+import {setHeaderStyle} from '../styles/navigation'
 import InputField from '../components/form/InputField'
 import NextArrowButton from '../components/buttons/NextArrowButton'
 import Notification from '../components/Notification'
@@ -14,9 +14,19 @@ import NavBarButton from '../components/buttons/NavBarButton'
 
 class LogIn extends Component {
   static navigationOptions = ({ navigation}) => ({
-    headerStyle: transparentHeaderStyle,
-    headerTransparent: true,
-    headerTintColor: colors.white
+    headerRight: <NavBarButton
+      handleButtonPress={() => navigation.navigate('ForgotPassword')}
+      location="right"
+      color={colors.white}
+      text="Forgot Password"
+    />,
+    /* headerLeft: <NavBarButton 
+    handleButtonPress={() => navigation.goBack()}
+      location="left"
+      icon={<Icon name="angle-left" color={colors.white} size={30} />}
+    />, */
+    headerTintColor: colors.white,
+    ...setHeaderStyle(Platform.OS)
   })
   constructor (props) {
     super(props)
