@@ -17,7 +17,7 @@ export default class Categories extends Component {
   get Categories () {
     const { categories } = this.props
     return categories.map((category, index) => (
-        <TouchableHighlight
+        <TouchableHighlight key={index}
           style={styles.card}
         >
           <Image style={styles.image}

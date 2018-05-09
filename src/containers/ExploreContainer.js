@@ -10,6 +10,8 @@ import colors from '../styles/colors'
 import SearchBar from '../components/form/SearchBar'
 import Categories from '../components/explore/Categories'
 import {categoriesList} from '../data/categories'
+import Listings from '../components/explore/Listings'
+import listings from '../data/listings'
 
 export default class ExploreContainer extends Component {
   static navigationOptions = {
@@ -22,6 +24,18 @@ export default class ExploreContainer extends Component {
       />
     )
   }
+  renderListings = () => {
+    return listings.map((item, index) => (
+      <View key={`listing-${index}`}>
+        <Listings key={`listing-item-${index}`}
+          title={item.title}
+          boldText={item.boldText}
+          listings={item.listings}
+          showAddToFav={item.showAddToFav}
+        />
+      </View>
+    ))
+  }
   render () {
     return (
       <View style={styles.wrapper}>
@@ -33,6 +47,7 @@ export default class ExploreContainer extends Component {
           <View style={styles.categories}>
             <Categories categories={categoriesList} />
           </View>
+          {this.renderListings()}
         </ScrollView>
       </View>
     )
@@ -58,6 +73,7 @@ const styles = StyleSheet.create({
     color: colors.gray04
   },
   categories: {
-    paddingLeft: 20
+    paddingLeft: 20,
+    marginBottom: 40
   }
 })
