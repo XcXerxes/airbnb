@@ -28,10 +28,7 @@ export default class ExploreContainer extends Component {
     return listings.map((item, index) => (
       <View key={`listing-${index}`}>
         <Listings key={`listing-item-${index}`}
-          title={item.title}
-          boldText={item.boldText}
-          listings={item.listings}
-          showAddToFav={item.showAddToFav}
+          {...item}
         />
       </View>
     ))
