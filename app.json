@@ -1,5 +1,26 @@
 {
   "expo": {
-    "sdkVersion": "26.0.0"
+    "name": "aribnb-clone",
+    "description": "A very interesting project.",
+    "slug": "aribnb-clone",
+    "privacy": "public",
+    "sdkVersion": "26.0.0",
+    "platforms": ["ios", "android"],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.aribnb.aribnbClone"
+    }
   }
 }

@@ -12,6 +12,7 @@ import {
 } from 'react-native'
 import colors from '../../styles/colors'
 import HeartButton from '../buttons/HeartButton'
+import Stars from '../Stars'
 
 export default class Listings extends Component {
   constructor(props) {
@@ -52,6 +53,12 @@ export default class Listings extends Component {
           <Text style={styles.listingTitle}
             numberOfLines={2}
           >{item.title}</Text>
+          <Text style={styles.listingPrice}>${item.price} {item.priceType}</Text>
+          <Stars 
+          votes={item.stars}
+          size={10}
+          color={colors.green02}
+          />
         </View>
       </TouchableHighlight>
     ))
@@ -145,7 +152,15 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '700'
   },
+  listingPrice: {
+    color: colors.gray04,
+    marginTop: 4,
+    marginBottom: 2,
+    fontSize: 12,
+    fontWeight: '300'
+  },
   listingType: {
+    fontSize: 13,
     fontWeight: '700'
   },
   addToFavoriteBtn: {
