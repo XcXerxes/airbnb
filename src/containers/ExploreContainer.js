@@ -15,6 +15,7 @@ import listings from '../data/listings'
 
 export default class ExploreContainer extends Component {
   static navigationOptions = {
+    header: null,
     tabBarLabel: 'Explore',
     tabBarIcon: ({tintColor}) => (
       <Icon 
@@ -24,11 +25,18 @@ export default class ExploreContainer extends Component {
       />
     )
   }
+  constructor (props) {
+    super(props)
+  }
+  handleAddToFav = () => {
+    const {navigate} = this.props.navigation
+    navigate('CreateList')
+  }
   renderListings = () => {
     return listings.map((item, index) => (
       <View key={`listing-${index}`}>
         <Listings key={`listing-item-${index}`}
-          {...item}
+          {...item} handleAddToFav={this.handleAddToFav}
         />
       </View>
     ))

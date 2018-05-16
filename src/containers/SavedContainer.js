@@ -5,6 +5,8 @@ import {
   StyleSheet
 } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
+import colors from '../styles/colors'
+import NoResult from '../components/saved/NoResult'
 
 export default class SavedContainer extends Component {
   static navigationOptions = {
@@ -20,7 +22,7 @@ export default class SavedContainer extends Component {
   render () {
     return (
       <View style={styles.wrapper}>
-        <Text>Saved Container</Text>
+        <NoResult />
       </View>
     )
   }
@@ -29,6 +31,6 @@ export default class SavedContainer extends Component {
 const styles = StyleSheet.create({
   wrapper: {
     display: 'flex',
-    padding: 50
+    backgroundColor: colors.white
   }
 })

@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "aribnb-clone",
+    "name": "airbnb-clone",
     "description": "A very interesting project.",
-    "slug": "aribnb-clone",
+    "slug": "airbnb-clone",
     "privacy": "public",
     "sdkVersion": "26.0.0",
     "platforms": ["ios", "android"],
@@ -20,7 +20,10 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.aribnb.aribnbClone"
+      "bundleIdentifier": "com.xcxerxes.airbnb"
+    },
+    "android": {
+      "package": "com.xcxerxes.airbnb"
     }
   }
 }

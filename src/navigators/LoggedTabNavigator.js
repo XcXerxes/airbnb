@@ -1,17 +1,25 @@
-import {TabNavigator, TabBarBottom} from 'react-navigation'
+import {TabNavigator, TabBarBottom, StackNavigator} from 'react-navigation'
 import ExploreContainer from '../containers/ExploreContainer'
 import InboxContainer from '../containers/InboxContainer'
 import ProfileContainer from '../containers/ProfileContainer'
 import SavedContainer from '../containers/SavedContainer'
 import TripsContainer from '../containers/TripsContainer'
+import CreateList from '../screens/CreateList'
 import colors from '../styles/colors'
 
-const LoggedTabNavigator = TabNavigator({
+export const ExploreTab = StackNavigator({
   ExploreContainer: {screen: ExploreContainer},
-  SavedContainer: {screen: SavedContainer},
-  TripsContainer: {screen: TripsContainer},
-  InboxContainer: {screen: InboxContainer},
-  ProfileContainer: {screen: ProfileContainer}
+  CreateList: {screen: CreateList}
+}, {
+  mode: 'modal'
+})
+
+const LoggedTabNavigator = TabNavigator({
+  Explore: {screen: ExploreTab},
+  Saved: {screen: SavedContainer},
+  Trips: {screen: TripsContainer},
+  Inbox: {screen: InboxContainer},
+  Profile: {screen: ProfileContainer}
 }, {
   tabBarOptions: {
     labelStyle: {
