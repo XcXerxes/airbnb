@@ -16,7 +16,7 @@ export default class InputField extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      secureInput: props.inputType === 'text' || props.inputType === 'password' ? true : false,
+      secureInput: (props.inputType === 'text' || props.inputType === 'email') ? false : true,
       scaleCheckmarkValue: new Animated.Value(0)
     }
   }
@@ -40,7 +40,7 @@ export default class InputField extends Component {
     const color = labelColor || colors.white
     const inputColor = textColor || colors.white
     const borderBottom = borderBottomColor || 'transparent'
-    const keyboardType = inputType === 'email' ? 'email-address' : 'default'
+    const keyboardType = inputType === 'Email' ? 'email-address' : 'default'
     const iconScale = scaleCheckmarkValue.interpolate({
       inputRange: [0, .5, 1],
       outputRange: [0.01, 1.6, 1]

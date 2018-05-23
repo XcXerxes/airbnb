@@ -112,7 +112,7 @@ class LogIn extends Component {
             <InputField 
             labelText="EMAIL ADDRESS" 
             borderBottomColor={colors.white}
-            inputType="Email"
+            inputType="email"
             customStyle={{marginBottom: 30}}
             onChangeText={this.handleEmailChange}
             showCheckmark={emailValid}
