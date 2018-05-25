@@ -22,6 +22,9 @@ export default class HeartButton extends Component {
       handleAddToFav && handleAddToFav()
     })
   }
+  componentWillReceiveProps(nextProps) {
+    this.setState({addedToFavorite: nextProps.selected})
+  }
   render () {
     const {addedToFavorite} = this.state
     const {selectedColor, color} =  this.props
@@ -54,7 +57,8 @@ HeartButton.propTypes = {
   color: PropTypes.string.isRequired,
   selectedColor: PropTypes.string.isRequired,
   itemId: PropTypes.number.isRequired,
-  handleAddToFav: PropTypes.func
+  handleAddToFav: PropTypes.func,
+  selected: PropTypes.bool
 }
 const styles = StyleSheet.create({
   favoriteBtn: {

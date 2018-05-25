@@ -27,10 +27,24 @@ export default class ExploreContainer extends Component {
   }
   constructor (props) {
     super(props)
+    this.state = {
+      favouriteListings: []
+    }
   }
-  handleAddToFav = () => {
+  onCreateListClose = (listingId, listCreated) => {
+    alert(listingId, listCreated)
+  }
+
+  handleAddToFav = (listing) => {
     const {navigate} = this.props.navigation
-    navigate('CreateList')
+    let { favouriteListings } = this.state
+    const index = favouriteListings.indexOf(listing.id)
+    if (index > -1) {
+      favouriteListings = favouriteListings.filter(item => item !== listing.id)
+      this.setState({favouriteListings})
+    } else {
+      navigate('CreateList', {listing, onCreateListClose: this.onCreateListClose})
+    }
   }
   renderListings = () => {
     return listings.map((item, index) => (

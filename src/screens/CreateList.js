@@ -12,32 +12,41 @@ import colors from '../styles/colors'
 import InputField from '../components/form/InputField'
 import RadioInput from '../components/form/RadioInput'
 
-export default class ProfileContainer extends Component {
+export default class CreateList extends Component {
   static navigationOptions = ({navigation}) => ({
     tabBarVisible: false,
-    headerLeft: <TouchableOpacity
+    headerLeft: (<TouchableOpacity
       style={styles.closeButton}
       onPress={() => navigation.goBack()}
-    >,
+    >
       <Icon
         name="md-close"
         size={30}
         color={colors.black }
         />
-    </TouchableOpacity>,
+    </TouchableOpacity>),
     headerStyle: styles.headerStyle
   })
   constructor (props) {
     super(props)
+    this.listCreated = false
     this.state = {
-      privacyOption: 'private'
+      privacyOption: 'private',
+      location: props.navigation.state.params.listing.location
     }
+  }
+  componentWillMount () {
+    const {navigation} = this.props
+    navigation.state.params.onCreateListClose(navigation.state.params.listing.id, this.listCreated)
+  }
+  handleLocationChange = (location) => {
+    this.setState({location})
   }
   selectePrivacyOption = (privacyOption) => {
     this.setState({privacyOption})
   }
   render () {
-    const {privacyOption} = this.state
+    const {privacyOption, location} = this.state
     return (
       <View style={styles.wrapper}>
         <ScrollView style={styles.scrollView}>
@@ -49,8 +58,8 @@ export default class ProfileContainer extends Component {
                 labelTextSize={20}
                 labelTextWeight="400"
                 labelColor={colors.lightBlack}
-                placeholder="Some text..."
-                value="Some value..."
+                placeholder={location}
+                value={location}
                 showCheckmark={false}
                 autoFocus={true}
                 inputType="text"

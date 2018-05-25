@@ -41,7 +41,7 @@ export default class Listings extends Component {
               color={colors.white}
               selectedColor={colors.pink}
               itemId={item.id}
-              handleAddToFav={handleAddToFav}
+              handleAddToFav={() => handleAddToFav(item)}
             /> 
           </View>
         : null }
