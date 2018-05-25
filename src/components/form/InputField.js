@@ -35,8 +35,9 @@ export default class InputField extends Component {
   }
   render () {
     const {secureInput, scaleCheckmarkValue} = this.state
-    const {labelText, labelTextSize, labelColor, textColor, borderBottomColor, inputType, customStyle, onChangeText, showCheckmark, autoFocus, autoCapitalize} = this.props
+    const {labelTextWeight, labelText, labelTextSize, labelColor, textColor, borderBottomColor, inputType, onChangeText, showCheckmark, autoFocus, autoCapitalize, value, inputStyle, placeholder} = this.props
     const fontSize = labelTextSize || 14
+    const fontWeight = labelTextWeight || '700'
     const color = labelColor || colors.white
     const inputColor = textColor || colors.white
     const borderBottom = borderBottomColor || 'transparent'
@@ -45,11 +46,15 @@ export default class InputField extends Component {
       inputRange: [0, .5, 1],
       outputRange: [0.01, 1.6, 1]
     })
+    let customStyle = inputStyle || {}
+    if (!inputStyle || inputStyle && !inputStyle.paddingBottom) {
+      customStyle.paddingBottom = 5
+    }
     const scaleValue = showCheckmark ? 1 : 0
     this.scaleCheckmark(scaleValue)
     return (
       <View style={[customStyle, styles.wrapper]}>
-        <Text style={[styles.label, {fontSize, color}]}>{labelText}</Text>
+        <Text style={[styles.label, {fontWeight, fontSize, color}]}>{labelText}</Text>
         {inputType === 'password' ? 
           <TouchableOpacity
             style={styles.showButton}
@@ -67,7 +72,7 @@ export default class InputField extends Component {
         </Animated.View>
         <TextInput  
          autoCorrect={false}
-         style={[styles.inputField, {color: inputColor, borderBottomColor: borderBottom}]}
+         style={[styles.inputField, {color: inputColor, borderBottomColor: borderBottom}, inputStyle]}
          underlineColorAndroid="transparent"
          secureTextEntry={secureInput}
          onChangeText={onChangeText}
@@ -75,6 +80,8 @@ export default class InputField extends Component {
          autoFocus={autoFocus}
          autoCapitalize={autoCapitalize}
          autoCorrect={false}
+         value={value || ''}
+         placeholder={placeholder}
          underlineColorAndroid="transparent"
         />
       </View>
@@ -93,7 +100,9 @@ InputField.propTypes = {
   onChangeText: PropTypes.func,
   showCheckmark: PropTypes.bool,
   autoFocus: PropTypes.bool,
-  autoCapitalize: PropTypes.bool
+  autoCapitalize: PropTypes.bool,
+  value: PropTypes.string,
+  placeholder: PropTypes.string
 }
 
 const styles = StyleSheet.create({
@@ -101,7 +110,6 @@ const styles = StyleSheet.create({
     display: 'flex'
   },
   label: {
-    fontWeight: '700',
     marginBottom: 20
   },
   inputField: {
