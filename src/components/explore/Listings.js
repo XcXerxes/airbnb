@@ -31,7 +31,7 @@ export default class Listings extends Component {
     return colorList[Math.floor(Math.random() * colorList.length)]
   }
   renderListings = () => {
-    const {listings, showAddToFav, handleAddToFav} = this.props
+    const {listings, showAddToFav, handleAddToFav, favouriteListings} = this.props
     return listings.map((item, index) => (
       <TouchableHighlight key={index} style={styles.card}>
         <View style={styles.cardContent}>
@@ -42,6 +42,7 @@ export default class Listings extends Component {
               selectedColor={colors.pink}
               itemId={item.id}
               handleAddToFav={() => handleAddToFav(item)}
+              selected={favouriteListings.indexOf(item.id) > -1}
             /> 
           </View>
         : null }
@@ -97,7 +98,8 @@ Listings.propTypes = {
   title: PropTypes.string,
   boldTitle: PropTypes.bool,
   listings: PropTypes.array,
-  handleAddToFav: PropTypes.func
+  handleAddToFav: PropTypes.func,
+  favouriteListings: PropTypes.array
 }
 
 const styles = StyleSheet.create({

@@ -32,7 +32,13 @@ export default class ExploreContainer extends Component {
     }
   }
   onCreateListClose = (listingId, listCreated) => {
-    alert(listingId, listCreated)
+    let {favouriteListings} = this.state
+    if (listCreated) {
+      favouriteListings.push(listingId)
+    } else {
+      favouriteListings = favouriteListings.filter(item => item !== listingId)
+    }
+    this.setState({favouriteListings})
   }
 
   handleAddToFav = (listing) => {
@@ -51,6 +57,7 @@ export default class ExploreContainer extends Component {
       <View key={`listing-${index}`}>
         <Listings key={`listing-item-${index}`}
           {...item} handleAddToFav={this.handleAddToFav}
+          favouriteListings={this.state.favouriteListings}
         />
       </View>
     ))

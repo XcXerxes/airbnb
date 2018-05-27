@@ -23,7 +23,7 @@ export default class HeartButton extends Component {
     })
   }
   componentWillReceiveProps(nextProps) {
-    this.setState({addedToFavorite: nextProps.selected})
+    // this.setState({addedToFavorite: nextProps.selected})
   }
   render () {
     const {addedToFavorite} = this.state

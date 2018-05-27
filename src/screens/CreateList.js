@@ -8,9 +8,11 @@ import {
   TouchableHighlight
 } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome'
 import colors from '../styles/colors'
 import InputField from '../components/form/InputField'
 import RadioInput from '../components/form/RadioInput'
+import RoundedButton from '../components/buttons/RoundedButton'
 
 export default class CreateList extends Component {
   static navigationOptions = ({navigation}) => ({
@@ -32,7 +34,8 @@ export default class CreateList extends Component {
     this.listCreated = false
     this.state = {
       privacyOption: 'private',
-      location: props.navigation.state.params.listing.location
+      location: props.navigation.state.params.listing.location,
+      loading: false
     }
   }
   componentWillMount () {
@@ -45,6 +48,17 @@ export default class CreateList extends Component {
   selectePrivacyOption = (privacyOption) => {
     this.setState({privacyOption})
   }
+  handleCreateList = () => {
+    const {goBack} = this.props.navigation
+    this.setState({loading: true})
+    this.listCreated = true
+
+    setTimeout(() => {
+     this.setState({loading: false}, () => {
+       goBack()
+     }) 
+    }, 2000)
+  }
   render () {
     const {privacyOption, location} = this.state
     return (
@@ -55,7 +69,7 @@ export default class CreateList extends Component {
             <View style={styles.inputWrapper}>
               <InputField 
                 labelText="Title"
-                labelTextSize={20}
+                labelTextSize={18}
                 labelTextWeight="400"
                 labelColor={colors.lightBlack}
                 placeholder={location}
@@ -66,6 +80,7 @@ export default class CreateList extends Component {
                 inputStyle={styles.inputStyle}
                 borderBottomColor={colors.gray06}
                 textColor={colors.lightBlack}
+                onChangeText={this.handleLocationChange}
               />
             </View>
             <View style={styles.privacyOptions}>
@@ -114,6 +129,26 @@ export default class CreateList extends Component {
             </View>
           </View>
         </ScrollView>
+        <View style={styles.createButton}>
+          <RoundedButton 
+            text="Create"
+            textColor={colors.white}
+            textAlign="left"
+            background={colors.green01}
+            borderColor="transparent"
+            iconPosition="right"
+            disabled={!location}
+            loading={this.state.loading}
+            icon={<View style={[{opacity: location ? 1: .2}, styles.buttonIcon]}>
+              <FontAwesomeIcon 
+              name="angle-right"
+              color={colors.white}
+              size={30}
+              />
+            </View>}
+            handleOnPress={this.handleCreateList}
+          />
+        </View>
       </View>
     )
   }
@@ -195,5 +230,17 @@ const styles = StyleSheet.create({
     color: colors.lightBlack,
     marginTop: 10,
     paddingRight: 60
+  },
+  createButton: {
+    position: 'absolute',
+    bottom: 0,
+    right: 10,
+    width: 110
+  },
+  buttonIcon: {
+    position: 'absolute',
+    right: 0,
+    top: '50%',
+    marginTop: -16
   }
 })
