@@ -1,5 +1,29 @@
 {
   "expo": {
-    "sdkVersion": "26.0.0"
+    "name": "airbnb-clone",
+    "description": "A very interesting project.",
+    "slug": "airbnb-clone",
+    "privacy": "public",
+    "sdkVersion": "26.0.0",
+    "platforms": ["ios", "android"],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.xcxerxes.airbnb"
+    },
+    "android": {
+      "package": "com.xcxerxes.airbnb"
+    }
   }
 }
